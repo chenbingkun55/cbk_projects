@@ -3,3 +3,5 @@ build/
 !vender/
 vender/*
 *\.un~
+*\.bak
+*\.tmp

@@ -39,7 +39,7 @@ SET(SRCS
 )
 
 if(WIN32)
-  set(SRCS ${SRCS} app_SplitPictureToolGui.rc)
+  set(SRCS ${SRCS} ${SOURCE}/app_SplitPictureToolGui.rc)
 endif(WIN32)
 
 # 按源目录来Filters
