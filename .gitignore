@@ -1,4 +1,5 @@
 bin/
 build/
-vender/
+!vender/
+vender/*
 *\.un~
