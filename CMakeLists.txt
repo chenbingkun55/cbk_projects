@@ -25,11 +25,14 @@ endmacro(source_group_by_dir)
 SET(wxWidgets_ROOT_DIR "${PROJECT_SOURCE_DIR}/vender/wxWidgets/wxWidgets-3.1.0")
 
 # CBK 库名
+SET(LIB_BASE lib_Base)
 SET(LIB_SPLITPICTURETOOL lib_SplitPictureTool)
+SET(CBK_LIB ${LIB_BASE} ${LIB_SPLITPICTURETOOL})
 
 # CBK 头文件
-SET(INCLUDE_CBK "${PROJECT_SOURCE_DIR}/include")
-INCLUDE_DIRECTORIES(${INCLUDE_CBK})
+INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/include)
+INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/libs/lib_Base/source)
+
 
 
 # 添加代码 子目录
