@@ -1,7 +1,12 @@
 bin/
 build/
-!vender/
-vender/*
+demos/
+distrib/
+samples/
+tests/
 *\.un~
 *\.bak
 *\.tmp
+*\.pdb
+*\.lib
+*\.so
