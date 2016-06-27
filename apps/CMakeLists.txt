@@ -1,2 +1,0 @@
-ADD_SUBDIRECTORY(app_SplitPictureTool)
-ADD_SUBDIRECTORY(app_SplitPictureToolGui)

@@ -1,2 +1,0 @@
-ADD_SUBDIRECTORY(lib_SplitPictureTool)
-ADD_SUBDIRECTORY(lib_Base)
