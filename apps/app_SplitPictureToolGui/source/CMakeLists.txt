@@ -1,4 +1,4 @@
-# 设置变量
+﻿# 设置变量
 SET(PROJECT_NAME app_SplitPictureToolGui)
 
 project(${PROJECT_NAME})
@@ -9,5 +9,5 @@ set(wxWidgets_CONFIGURATION mswu)
 find_package(wxWidgets COMPONENTS core base REQUIRED)
 include(${wxWidgets_USE_FILE})
  
-add_executable(${PROJECT_NAME} ${SRC_LIST})
+add_executable(${PROJECT_NAME} WIN32 ${SRC_LIST})
 target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES})
