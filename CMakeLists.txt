@@ -24,11 +24,11 @@ endmacro(source_group_by_dir)
 # SET 
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-
 # CBK 库名
 SET(LIB_CBK 
     lib_Base
     lib_SplitPictureTool
+    lib_tinyxml
 )
 # wxWidgets 根目录
 SET(wxWidgets_ROOT_DIR "${PROJECT_SOURCE_DIR}/vender/wxWidgets/wxWidgets-3.1.0")
@@ -36,7 +36,9 @@ SET(wxWidgets_ROOT_DIR "${PROJECT_SOURCE_DIR}/vender/wxWidgets/wxWidgets-3.1.0")
 
 # CBK 头文件
 SET(INCLUDE_CBK 
-${PROJECT_SOURCE_DIR}/libs/lib_Base/source
+    ${PROJECT_SOURCE_DIR}/libs/lib_Base/source
+    ${PROJECT_SOURCE_DIR}/libs/lib_SplitPictureTool/source
+    ${PROJECT_SOURCE_DIR}/vender/lib_tinyxml/source
 )
 
 # 添加代码 子目录
@@ -44,3 +46,4 @@ add_subdirectory(apps/app_SplitPictureTool/source)
 add_subdirectory(apps/app_SplitPictureToolGui/source)
 add_subdirectory(libs/lib_Base/source)
 add_subdirectory(libs/lib_SplitPictureTool/source)
+add_subdirectory(vender/lib_tinyxml/source)
