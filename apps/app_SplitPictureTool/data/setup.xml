@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pic>
 	<fromat row="3" colmun="3" />
-	<ps>
+	<blocks>
 		<block index="1" name="pic_{NAME}_{NUM}.png" />
 		<block index="2" name="pic_{NAME}_{NUM}.png" />
 		<block index="3" name="pic_{NAME}_{NUM}.png" />
@@ -11,8 +11,8 @@
 		<block index="7" name="pic_{NAME}_{NUM}.png" />
 		<block index="8" name="pic_{NAME}_{NUM}.png" />
 		<block index="9" name="pic_{NAME}_{NUM}.png" />
-	</ps>
-	<offset>
-		<o index="1" top="0" bottom="0" left="0" right="0" />
-	</offset>
+	</blocks>
+	<offsets>
+		<offset index="1" top="0" bottom="0" left="0" right="0" />
+	</offsets>
 </pic>
