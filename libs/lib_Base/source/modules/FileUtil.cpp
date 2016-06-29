@@ -30,6 +30,12 @@ bool FileUtil::loadToString(tstring& outStr, tstring filePath)
 	if(filePath.empty()) return FALSE;
 
 	std::ifstream ifs(filePath, std::ifstream::binary);
+	if (!ifs) 
+	{
+		std::cout << "file load faild.";
+		return FALSE;
+	}
+
 	std::filebuf* pbuf = ifs.rdbuf();
 	std::size_t size = (std::size_t)pbuf->pubseekoff(0, ifs.end, ifs.in);
 	
