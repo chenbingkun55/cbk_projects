@@ -7,18 +7,39 @@
 // Licence:     
 /////////////////////////////////////////////////////////////////////////////
 
+
+#include <cbk/cbkprec.h>
 #include "FileUtil.h"
-#include <fstream>
 
 NS_BEGIN
-
-bool FileUtil::openFile(std::fstream* outTream, tstring file)
+FileUtil::FileUtil()
 {
-	std::fstream* fs;
-	fs->open(file);
 
-	outTream = fs;
-	return true;
 }
 
+
+FileUtil::~FileUtil()
+{
+
+}
+
+
+
+bool FileUtil::loadToString(tstring& outStr, tstring filePath)
+{
+	if(filePath.empty()) return FALSE;
+
+	std::ifstream ifs(filePath, std::ifstream::binary);
+	std::filebuf* pbuf = ifs.rdbuf();
+	std::size_t size = (std::size_t)pbuf->pubseekoff(0, ifs.end, ifs.in);
+	
+	pbuf->pubseekpos(0, ifs.in);
+	char* buffer = new char[size];
+	pbuf->sgetn(buffer, size);
+	outStr = buffer;
+
+	ifs.close();
+	delete[] buffer;
+	return TRUE;
+}
 NS_END

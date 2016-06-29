@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <cbk/cbkprec.h>
 #include <lib_SplitPictureTool.h>
 
 int main()
@@ -8,10 +8,10 @@ int main()
 	cbk::SplitPictureTool* sp = new cbk::SplitPictureTool("geen_00.png", "./" ,"setup.xml");
 	
 	{ //string Process
-		sp->Initialize();
-		sp->SplitProcess();
-		sp->OffsetProcess();
-		sp->FinishingFlush();
+		sp->initialize();
+		sp->splitProcess();
+		sp->offsetProcess();
+		sp->finishingFlush();
 	}
 
 	return 0;

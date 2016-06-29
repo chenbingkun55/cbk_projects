@@ -7,85 +7,95 @@
 // Licence:     
 /////////////////////////////////////////////////////////////////////////////
 
-
+#include <cbk/cbkprec.h>
 #include "lib_SplitPictureTool.h"
-#include <modules/FileUtil.h>
-#include <tinyxml.h>
-#include <tinystr.h>
-
 
 NS_BEGIN
 SplitPictureTool::SplitPictureTool(const tstring picFile, const tstring outPath /*= EMPTY_STRING*/, const tstring setupXmlFile /*= EMPTY_STRING*/)
 {
-	m_sPicFile = picFile;
+	if (!FileUtil::loadToString(m_SetupXmlString, setupXmlFile)) return;
 	m_sOutPath = outPath;
-	m_sSetupXmlFile = setupXmlFile;
-
+	m_row = 0;
+	m_colmun = 0;
 }
 
-cbk::SplitPictureTool::~SplitPictureTool()
+SplitPictureTool::~SplitPictureTool()
 {
 
 }
 
-bool SplitPictureTool::Initialize()
+bool SplitPictureTool::initialize()
 {
-	//FileUtil::openFile(m_pPicFile,m_sPicFile);
-	TiXmlDocument doc("setup.xml");
-	bool YesNo = doc.LoadFile();
+	TiXmlDocument doc;
 
-	if (YesNo) 
+	if (doc.Parse(m_SetupXmlString.c_str()))
 	{
 		TiXmlElement* root = doc.FirstChildElement("pic");
-		TiXmlElement* fromat = doc.FirstChildElement("fromat");
+		TiXmlElement* fromat = root->FirstChildElement("fromat");
 
-		tstring m_Row = fromat->Attribute("row");
-		tstring m_Colmun = fromat->Attribute("colmun");
+		Convert::strToint(m_row,fromat->Attribute("row"));
+		Convert::strToint(m_colmun, fromat->Attribute("colmun"));
 
-		TiXmlElement* blocks = root->FirstChildElement("ps");
-		/*do
-		{
-			int index = (int)blocks->Attribute("index");
-			tstring name = (tstring)blocks->Attribute("name");
-
-			if (index > 0 && index <= (m_Row * m_Colmun))
-			{
-				m_SplitBlockList[index].push_back(new SPLIT_BLOCK(index));
-			}
-		} while (blocks->NextSiblingElement());
-
-
-		TiXmlElement* offsets = root->FirstChildElement("offset");
-		do
-		{
-			int index = (int)offsets->Attribute("index");
-			int top = (int)offsets->Attribute("top");
-			int bottom = (int)offsets->Attribute("bottom");
-			int left = (int)offsets->Attribute("left");
-			int right = (int)offsets->Attribute("right");
-
-			if (index > 0 && index <= (m_Row * m_Colmun))
-			{
-				m_SplitOffsetList[index].push_back(new SPLIT_OFFSET(index, top, bottom, left, right));
-			}
-		} while (offsets->NextSiblingElement());*/
+		this->intBlockList(root->FirstChildElement("blocks"));
+		this->intOffsetList(root->FirstChildElement("offsets"));
 	}
 	return true;
 }
 
-
-
-void SplitPictureTool::OffsetProcess()
+void SplitPictureTool::terminate()
 {
 
 }
 
-void SplitPictureTool::SplitProcess()
+void SplitPictureTool::intBlockList(TiXmlElement* blocks)
+{
+		TiXmlElement* block = blocks->FirstChildElement("block");
+		do
+		{
+			int index = 0;
+			Convert::strToint(index, block->Attribute("index"));
+			tstring name = block->Attribute("name");
+
+			if (index > 0 && index <= (m_row * m_colmun))
+			{
+				m_SplitBlockList.push_back(SPLIT_BLOCK(index, name));
+			}
+			block = block->NextSiblingElement();
+		} while (block);
+}
+
+void SplitPictureTool::intOffsetList(TiXmlElement* offsets)
+{
+	TiXmlElement* offset = offsets->FirstChildElement("offset");
+	do
+	{
+		int index, top, bottom, left, right;
+		Convert::strToint(index, offset->Attribute("index"));
+		Convert::strToint(top, offset->Attribute("top"));
+		Convert::strToint(bottom, offset->Attribute("bottom"));
+		Convert::strToint(left, offset->Attribute("left"));
+		Convert::strToint(right, offset->Attribute("right"));
+
+
+		if (index > 0 && index <= (m_row * m_colmun))
+		{
+			m_SplitOffsetList.push_back(SPLIT_OFFSET(index, top, bottom, left, right));
+		}
+		offset = offset->NextSiblingElement();
+	} while (offset);
+}
+
+void SplitPictureTool::splitProcess()
 {
 
 }
 
-void SplitPictureTool::FinishingFlush()
+void SplitPictureTool::offsetProcess()
+{
+
+}
+
+void SplitPictureTool::finishingFlush()
 {
 
 }

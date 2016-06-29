@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        FileUtil.h
+// Name:        Convert.h
 // Purpose:     
 // Author:      ChenBK
 // Created:     2016/06/26
@@ -7,20 +7,21 @@
 // Licence:     
 /////////////////////////////////////////////////////////////////////////////
 
-#ifndef __CBK_FILE_UTIL_H__
-#define __CBK_FILE_UTIL_H__
+#ifndef __CBK_CONVERT_H__
+#define __CBK_CONVERT_H__
 
 #include <cbk/cbkprec.h>
 
 NS_BEGIN
-class FileUtil
+class Convert
 {
 public:
-	FileUtil() ;
-	virtual ~FileUtil() ;
+	Convert();
+	virtual ~Convert();
 
-	static bool loadToString(tstring& outStr, tstring filePath);
+	static void strToint(int& outInt, tstring inStr);
+	static void intToStr(tstring& outStr, int inInt);
 private:
 };
 NS_END
-#endif //__CBK_FILE_UTIL_H__
+#endif //__CBK_CONVERT_H__

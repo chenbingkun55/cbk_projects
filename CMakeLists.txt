@@ -36,6 +36,7 @@ SET(wxWidgets_ROOT_DIR "${PROJECT_SOURCE_DIR}/vender/wxWidgets/wxWidgets-3.1.0")
 
 # CBK 头文件
 SET(INCLUDE_CBK 
+    ${PROJECT_SOURCE_DIR}/include
     ${PROJECT_SOURCE_DIR}/libs/lib_Base/source
     ${PROJECT_SOURCE_DIR}/libs/lib_SplitPictureTool/source
     ${PROJECT_SOURCE_DIR}/vender/lib_tinyxml/source
