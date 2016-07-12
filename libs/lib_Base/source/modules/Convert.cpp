@@ -11,7 +11,7 @@
 #include <cbk/cbkprec.h>
 #include "Convert.h"
 
-NS_BEGIN
+NS_CBK_BEGIN
 Convert::Convert()
 {
 
@@ -38,5 +38,5 @@ void Convert::intToStr(tstring& outStr, int inInt)
 	//ss >> outStr;
 }
 
-NS_END
+NS_CBK_END
 

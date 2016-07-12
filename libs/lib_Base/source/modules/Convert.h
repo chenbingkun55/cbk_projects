@@ -12,7 +12,7 @@
 
 #include <cbk/cbkprec.h>
 
-NS_BEGIN
+NS_CBK_BEGIN
 class Convert
 {
 public:
@@ -23,5 +23,5 @@ public:
 	static void intToStr(tstring& outStr, int inInt);
 private:
 };
-NS_END
+NS_CBK_END
 #endif //__CBK_CONVERT_H__

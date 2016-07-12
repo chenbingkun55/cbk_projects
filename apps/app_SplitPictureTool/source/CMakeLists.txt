@@ -1,4 +1,4 @@
-# 设置变量
+﻿# 设置变量
 SET(PROJECT_NAME app_SplitPictureTool)
 
 # 项目信息

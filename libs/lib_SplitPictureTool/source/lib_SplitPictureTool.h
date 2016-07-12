@@ -12,7 +12,7 @@
 
 #include <cbk/cbkprec.h>
 
-NS_BEGIN
+NS_CBK_BEGIN
 class SplitPictureTool 
 {
 public:
@@ -79,5 +79,5 @@ private:
 };
 
 
-NS_END
+NS_CBK_END
 #endif //__CBK_LIB_SPLIT_PICTURE_TOOL_H__

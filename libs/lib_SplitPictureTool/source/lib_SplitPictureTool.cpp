@@ -10,10 +10,10 @@
 #include <cbk/cbkprec.h>
 #include "lib_SplitPictureTool.h"
 
-NS_BEGIN
+NS_CBK_BEGIN
 SplitPictureTool::SplitPictureTool(const tstring picFile, const tstring outPath /*= EMPTY_STRING*/, const tstring setupXmlFile /*= EMPTY_STRING*/)
 {
-	if (!FileUtil::loadToString(m_SetupXmlString, setupXmlFile)) return;
+	if (!NS_CBK_FILE::loadToString(m_SetupXmlString, setupXmlFile)) return;
 	m_sOutPath = outPath;
 	m_row = 0;
 	m_colmun = 0;
@@ -100,4 +100,4 @@ void SplitPictureTool::finishingFlush()
 
 }
 
-NS_END
+NS_CBK_END

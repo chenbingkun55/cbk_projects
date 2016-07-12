@@ -11,6 +11,7 @@
 #ifndef _CBK_CBK_H_
 #define _CBK_CBK_H_
 
+//std include
 #include "stdio.h"
 #include <string>
 #include <iostream>
@@ -18,10 +19,11 @@
 #include <vector>
 
 #include "define.h"
-// modules
-#include <modules/FileUtil.h>
-#include <modules/Convert.h>
+// cbk modules include
+#include <modules/File/File_interface.h>
+#include <modules/String/String_interface.h>
 
+// other include
 #include <tinyxml.h>
 #include <tinystr.h>
 
