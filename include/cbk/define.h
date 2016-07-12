@@ -23,6 +23,9 @@
 #define NS_CBK_STRING					 cbk::String
 #define NS_CBK_STRING_BEGIN              namespace String {
 #define NS_CBK_STRING_END                };
+#define NS_CBK_CONVERT					 cbk::Convert
+#define NS_CBK_CONVERT_BEGIN             namespace Convert {
+#define NS_CBK_CONVERT_END               };
 #define USING_NS						 using namespace cbk
 
 #define EMPTY_STRING ""

@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        Convert.cpp
+// Name:        ConvertUtil.cpp
 // Purpose:     
 // Author:      ChenBK
 // Created:     2016/06/26
@@ -9,34 +9,25 @@
 
 
 #include <cbk/cbkprec.h>
-#include "Convert.h"
+#include "ConvertImplement.h"
 
 NS_CBK_BEGIN
-Convert::Convert()
-{
+NS_CBK_CONVERT_BEGIN
 
-}
-
-
-Convert::~Convert()
-{
-
-}
-
-
-void Convert::strToint(int& outInt, tstring inStr)
+void strToint(int& outInt, tstring inStr)
 {
 	outInt = 0;
 	outInt = atoi(inStr.c_str());
 }
 
 
-void Convert::intToStr(tstring& outStr, int inInt)
+void intToStr(tstring& outStr, int inInt)
 {
 	//std::stringstream ss;
 	//ss << inInt;
 	//ss >> outStr;
 }
 
+NS_CBK_CONVERT_END
 NS_CBK_END
 

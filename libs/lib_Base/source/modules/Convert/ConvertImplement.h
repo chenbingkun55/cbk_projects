@@ -7,21 +7,18 @@
 // Licence:     
 /////////////////////////////////////////////////////////////////////////////
 
-#ifndef __CBK_CONVERT_H__
-#define __CBK_CONVERT_H__
+#ifndef __CBK_CONVERT_IMPLEMENT_H__
+#define __CBK_CONVERT_IMPLEMENT_H__
 
 #include <cbk/cbkprec.h>
+#include "ConvertInterface.h"
 
 NS_CBK_BEGIN
-class Convert
-{
-public:
-	Convert();
-	virtual ~Convert();
+NS_CBK_CONVERT_BEGIN
 
-	static void strToint(int& outInt, tstring inStr);
-	static void intToStr(tstring& outStr, int inInt);
-private:
-};
+	void strToint(int& outInt, tstring inStr);
+	void intToStr(tstring& outStr, int inInt);
+
+NS_CBK_CONVERT_END
 NS_CBK_END
-#endif //__CBK_CONVERT_H__
+#endif //__CBK_CONVERT_IMPLEMENT_H__

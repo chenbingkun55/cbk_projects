@@ -33,8 +33,8 @@ bool SplitPictureTool::initialize()
 		TiXmlElement* root = doc.FirstChildElement("pic");
 		TiXmlElement* fromat = root->FirstChildElement("fromat");
 
-		Convert::strToint(m_row,fromat->Attribute("row"));
-		Convert::strToint(m_colmun, fromat->Attribute("colmun"));
+		NS_CBK_CONVERT::strToint(m_row,fromat->Attribute("row"));
+		NS_CBK_CONVERT::strToint(m_colmun, fromat->Attribute("colmun"));
 
 		this->intBlockList(root->FirstChildElement("blocks"));
 		this->intOffsetList(root->FirstChildElement("offsets"));
@@ -53,7 +53,7 @@ void SplitPictureTool::intBlockList(TiXmlElement* blocks)
 		do
 		{
 			int index = 0;
-			Convert::strToint(index, block->Attribute("index"));
+			NS_CBK_CONVERT::strToint(index, block->Attribute("index"));
 			tstring name = block->Attribute("name");
 
 			if (index > 0 && index <= (m_row * m_colmun))
@@ -70,11 +70,11 @@ void SplitPictureTool::intOffsetList(TiXmlElement* offsets)
 	do
 	{
 		int index, top, bottom, left, right;
-		Convert::strToint(index, offset->Attribute("index"));
-		Convert::strToint(top, offset->Attribute("top"));
-		Convert::strToint(bottom, offset->Attribute("bottom"));
-		Convert::strToint(left, offset->Attribute("left"));
-		Convert::strToint(right, offset->Attribute("right"));
+		NS_CBK_CONVERT::strToint(index, offset->Attribute("index"));
+		NS_CBK_CONVERT::strToint(top, offset->Attribute("top"));
+		NS_CBK_CONVERT::strToint(bottom, offset->Attribute("bottom"));
+		NS_CBK_CONVERT::strToint(left, offset->Attribute("left"));
+		NS_CBK_CONVERT::strToint(right, offset->Attribute("right"));
 
 
 		if (index > 0 && index <= (m_row * m_colmun))

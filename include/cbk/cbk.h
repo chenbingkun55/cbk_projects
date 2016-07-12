@@ -20,8 +20,9 @@
 
 #include "define.h"
 // cbk modules include
-#include <modules/File/File_interface.h>
-#include <modules/String/String_interface.h>
+#include <modules/File/FileInterface.h>
+#include <modules/String/StringInterface.h>
+#include <modules/Convert/ConvertInterface.h>
 
 // other include
 #include <tinyxml.h>

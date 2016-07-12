@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        File_impl.h
+// Name:        Convert.h
 // Purpose:     
 // Author:      ChenBK
 // Created:     2016/06/26
@@ -7,18 +7,17 @@
 // Licence:     
 /////////////////////////////////////////////////////////////////////////////
 
-#ifndef __CBK_STRING_IMPL_H__
-#define __CBK_STRING_IMPL_H__
+#ifndef __CBK_CONVERT_INTERFACE_H__
+#define __CBK_CONVERT_INTERFACE_H__
 
 #include <cbk/cbkprec.h>
-#include "String_interface.h"
 
 NS_CBK_BEGIN
-NS_CBK_STRING_BEGIN
+NS_CBK_CONVERT_BEGIN
 
-	void printWorld();
-	
-NS_CBK_STRING_END
+	void strToint(int& outInt, tstring inStr);
+	void intToStr(tstring& outStr, int inInt);
+
+NS_CBK_CONVERT_END
 NS_CBK_END
-
-#endif //__CBK_STRING_IMPL_H__
+#endif //__CBK_CONVERT_INTERFACE_H__

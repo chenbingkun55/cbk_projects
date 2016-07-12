@@ -7,11 +7,11 @@
 // Licence:     
 /////////////////////////////////////////////////////////////////////////////
 
-#ifndef __CBK_FILE_IMPL_H__
-#define __CBK_FILE_IMPL_H__
+#ifndef __CBK_FILE_IMPLEMENT_H__
+#define __CBK_FILE_IMPLEMENT_H__
 
 #include <cbk/cbkprec.h>
-#include "File_interface.h"
+#include "FileInterface.h"
 
 NS_CBK_BEGIN
 NS_CBK_FILE_BEGIN
@@ -22,4 +22,4 @@ NS_CBK_FILE_BEGIN
 NS_CBK_FILE_END
 NS_CBK_END
 
-#endif //__CBK_FILE_IMPL_H__
+#endif //__CBK_FILE_IMPLEMENT_H__
