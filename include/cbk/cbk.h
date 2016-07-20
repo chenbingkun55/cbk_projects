@@ -8,8 +8,8 @@
 // Licence:     
 /////////////////////////////////////////////////////////////////////////////
 
-#ifndef _CBK_CBK_H_
-#define _CBK_CBK_H_
+#ifndef _CBK_H_
+#define _CBK_H_
 
 //std include
 #include "stdio.h"
@@ -27,5 +27,7 @@
 // other include
 #include <tinyxml.h>
 #include <tinystr.h>
+#include <wx/wxprec.h>
+#include <wx/wx.h>
 
-#endif // _CBK_CBK_H_
+#endif // _CBK_H_

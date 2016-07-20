@@ -7,16 +7,23 @@
 // Licence:     
 /////////////////////////////////////////////////////////////////////////////
 
-#include <cbk/cbkprec.h>
 #include "lib_SplitPictureTool.h"
+#include "wx/file.h"
+#include "wx/bitmap.h"
+#include "wx/msw/brush.h"
+#include "wx/chartype.h"
 
 NS_CBK_BEGIN
 SplitPictureTool::SplitPictureTool(const tstring picFile, const tstring outPath /*= EMPTY_STRING*/, const tstring setupXmlFile /*= EMPTY_STRING*/)
 {
-	if (!NS_CBK_FILE::loadToString(m_SetupXmlString, setupXmlFile)) return;
+	m_picFile = picFile;
+	m_setupXmlFile = setupXmlFile;
 	m_sOutPath = outPath;
+	m_setupXmlStr = EMPTY_STRING;
 	m_row = 0;
 	m_colmun = 0;
+	m_SplitBlockList.clear();
+	m_SplitOffsetList.clear();
 }
 
 SplitPictureTool::~SplitPictureTool()
@@ -26,9 +33,13 @@ SplitPictureTool::~SplitPictureTool()
 
 bool SplitPictureTool::initialize()
 {
+	if (!NS_CBK_FILE::loadToString(m_setupXmlStr, m_setupXmlFile))
+	{
+		return false;
+	}
+	
 	TiXmlDocument doc;
-
-	if (doc.Parse(m_SetupXmlString.c_str()))
+	if (doc.Parse(m_setupXmlStr.c_str()))
 	{
 		TiXmlElement* root = doc.FirstChildElement("pic");
 		TiXmlElement* fromat = root->FirstChildElement("fromat");
@@ -85,14 +96,30 @@ void SplitPictureTool::intOffsetList(TiXmlElement* offsets)
 	} while (offset);
 }
 
+void SplitPictureTool::process() 
+{
+	//for(m_picFiles){
+	this->splitProcess();
+	//}
+}
+
 void SplitPictureTool::splitProcess()
 {
+	if (!wxFile::Exists(wxT("text.png"))) 
+	{
+		return;
+	}
+
+	wxFile file(wxT("text.png"));
+	
+	int len = file.Length();
+
 
 }
 
-void SplitPictureTool::offsetProcess()
+int SplitPictureTool::offsetProcess(int oIndex)
 {
-
+	return 0;
 }
 
 void SplitPictureTool::finishingFlush()

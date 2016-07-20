@@ -62,16 +62,19 @@ public:
 	void intBlockList(TiXmlElement* blocks);
 	void intOffsetList(TiXmlElement* offsets);
 
+	void process();
 	void splitProcess();
-	void offsetProcess();
+	int offsetProcess(int oIndex);
 	void finishingFlush();
 
 private:
 	int m_row;
 	int m_colmun;
+	tstring m_picFile;
 	tstring m_sPicFile;
 	tstring m_sOutPath;
-	tstring m_SetupXmlString;
+	tstring m_setupXmlFile;
+	tstring m_setupXmlStr;
 
 	std::fstream* m_pPicFile;
 	TV_SPLIT_BLOCK m_SplitBlockList;

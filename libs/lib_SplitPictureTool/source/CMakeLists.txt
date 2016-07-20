@@ -1,4 +1,4 @@
-# 设置变量
+﻿# 设置变量
 SET(PROJECT_NAME lib_SplitPictureTool)
 
 # 项目信息
@@ -21,6 +21,7 @@ SET(ALL_FILES
 
 # 按源目录来Filters
 source_group_by_dir(ALL_FILES)
+
 
 # 指定生成目标
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../../../../bin)

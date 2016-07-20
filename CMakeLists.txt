@@ -1,4 +1,4 @@
-# CMake 最低版本号要求
+﻿# CMake 最低版本号要求
 cmake_minimum_required (VERSION 2.8)
 
 # 项目信息
@@ -29,6 +29,7 @@ SET(LIB_CBK
     lib_Base
     lib_SplitPictureTool
     lib_tinyxml
+    lib_wxWidgets
 )
 # wxWidgets 根目录
 SET(wxWidgets_ROOT_DIR "${PROJECT_SOURCE_DIR}/vender/wxWidgets/wxWidgets-3.1.0")
@@ -40,6 +41,9 @@ SET(INCLUDE_CBK
     ${PROJECT_SOURCE_DIR}/libs/lib_Base/source
     ${PROJECT_SOURCE_DIR}/libs/lib_SplitPictureTool/source
     ${PROJECT_SOURCE_DIR}/vender/lib_tinyxml/source
+    ${PROJECT_SOURCE_DIR}/vender/wxWidgets/wxWidgets-3.1.0/include
+    ${PROJECT_SOURCE_DIR}/vender/wxWidgets/wxWidgets-3.1.0/src/png
+    ${PROJECT_SOURCE_DIR}/vender/wxWidgets/wxWidgets-3.1.0/src/zlib
 )
 
 # 添加代码 子目录
@@ -48,3 +52,4 @@ add_subdirectory(apps/app_SplitPictureToolGui/source)
 add_subdirectory(libs/lib_Base/source)
 add_subdirectory(libs/lib_SplitPictureTool/source)
 add_subdirectory(vender/lib_tinyxml/source)
+add_subdirectory(vender/wxWidgets/wxWidgets-3.1.0/src)
