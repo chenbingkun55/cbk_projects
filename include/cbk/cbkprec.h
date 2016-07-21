@@ -12,7 +12,7 @@
 #define _CBK_PREC_H_
 
 // use _CRT_SECURE_NO_WARNINGS
-#define _CRT_SECURE_NO_WARNINGS
+//#define _CRT_SECURE_NO_WARNINGS
 
 // include the most common cbk headers
 #include "cbk.h"

@@ -18,9 +18,9 @@ SET(ALL_FILES
 source_group_by_dir(ALL_FILES)
 
 
-set(wxWidgets_CONFIGURATION mswu)
-find_package(wxWidgets COMPONENTS core base REQUIRED)
-include(${wxWidgets_USE_FILE})
+#set(wxWidgets_CONFIGURATION mswu)
+#find_package(wxWidgets COMPONENTS core base REQUIRED)
+#include(${wxWidgets_USE_FILE})
  
 
 # 指定生成目标
@@ -33,5 +33,5 @@ add_executable(${PROJECT_NAME} WIN32 ${ALL_FILES})
 ### 指定链接库
 TARGET_LINK_LIBRARIES(${PROJECT_NAME}
     ${LIB_CBK}
-    ${wxWidgets_LIBRARIES}
+#    ${wxWidgets_LIBRARIES}
 )

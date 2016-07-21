@@ -28,3 +28,9 @@ SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../../../../bin)
 
 # 生成链接库
 add_library(${PROJECT_NAME} ${ALL_FILES})
+
+set_target_properties(${PROJECT_NAME} PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/../../../../bin)
+set_target_properties(${PROJECT_NAME} PROPERTIES ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${PROJECT_BINARY_DIR}/../../../../bin)
+set_target_properties(${PROJECT_NAME} PROPERTIES ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${PROJECT_BINARY_DIR}/../../../../bin)
+set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME_DEBUG static_wxwidgets_D)
+set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME_RELEASE static_wxwidgets)

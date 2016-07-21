@@ -21,18 +21,23 @@ macro(source_group_by_dir source_files)
     endif(MSVC)
 endmacro(source_group_by_dir)
 
-# SET 
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+if (CMAKE_SYSTEM_NAME MATCHES "Windows")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_CRT_SECURE_NO_WARNINGS -D__WXMSW__ -D_UNICODE -DWXBUILDING -DwxUSE_ZLIB_H_IN_PATH -DSCI_LEXER -DLINK_LEXERS -DCOMPILED_FROM_DSP")
+else ()
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+endif ()
 
 # CBK 库名
 SET(LIB_CBK 
     lib_Base
     lib_SplitPictureTool
     lib_tinyxml
-    lib_wxWidgets
+    lib_jpeg
+    lib_png
+    lib_zlib
 )
 # wxWidgets 根目录
-SET(wxWidgets_ROOT_DIR "${PROJECT_SOURCE_DIR}/vender/wxWidgets/wxWidgets-3.1.0")
+#SET(wxWidgets_ROOT_DIR "${PROJECT_SOURCE_DIR}/vender/wxWidgets/wxWidgets-3.1.0")
 
 
 # CBK 头文件
@@ -41,9 +46,18 @@ SET(INCLUDE_CBK
     ${PROJECT_SOURCE_DIR}/libs/lib_Base/source
     ${PROJECT_SOURCE_DIR}/libs/lib_SplitPictureTool/source
     ${PROJECT_SOURCE_DIR}/vender/lib_tinyxml/source
-    ${PROJECT_SOURCE_DIR}/vender/wxWidgets/wxWidgets-3.1.0/include
-    ${PROJECT_SOURCE_DIR}/vender/wxWidgets/wxWidgets-3.1.0/src/png
-    ${PROJECT_SOURCE_DIR}/vender/wxWidgets/wxWidgets-3.1.0/src/zlib
+    ${PROJECT_SOURCE_DIR}/vender/lib_jpeg/source
+    ${PROJECT_SOURCE_DIR}/vender/lib_png/source
+    ${PROJECT_SOURCE_DIR}/vender/lib_zlib/source
+
+    ${PROJECT_SOURCE_DIR}/vender/lib_wxwidgets/include
+    ${PROJECT_SOURCE_DIR}/vender/lib_wxwidgets/include/msvc
+    ${PROJECT_SOURCE_DIR}/vender/lib_wxwidgets/source/regex
+    ${PROJECT_SOURCE_DIR}/vender/lib_wxwidgets/source/stc
+    ${PROJECT_SOURCE_DIR}/vender/lib_wxwidgets/source/stc/scintilla/src
+    ${PROJECT_SOURCE_DIR}/vender/lib_wxwidgets/source/stc/scintilla/lexlib
+    ${PROJECT_SOURCE_DIR}/vender/lib_wxwidgets/source/stc/scintilla/include
+    ${PROJECT_SOURCE_DIR}/vender/lib_wxwidgets/source/expat/lib
 )
 
 # 添加代码 子目录
@@ -52,4 +66,7 @@ add_subdirectory(apps/app_SplitPictureToolGui/source)
 add_subdirectory(libs/lib_Base/source)
 add_subdirectory(libs/lib_SplitPictureTool/source)
 add_subdirectory(vender/lib_tinyxml/source)
-add_subdirectory(vender/wxWidgets/wxWidgets-3.1.0/src)
+add_subdirectory(vender/lib_jpeg/source)
+add_subdirectory(vender/lib_png/source)
+add_subdirectory(vender/lib_zlib/source)
+add_subdirectory(vender/lib_wxwidgets/source)

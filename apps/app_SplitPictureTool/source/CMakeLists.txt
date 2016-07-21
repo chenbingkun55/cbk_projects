@@ -22,9 +22,6 @@ SET(ALL_FILES
 # 按源目录来Filters
 source_group_by_dir(ALL_FILES)
 
-set(wxWidgets_CONFIGURATION mswu)
-find_package(wxWidgets COMPONENTS core base REQUIRED)
-include(${wxWidgets_USE_FILE})
 
 # 指定生成目标
 # 输出文件目录
@@ -37,5 +34,4 @@ add_executable(${PROJECT_NAME} ${ALL_FILES})
 ### 指定链接库
 TARGET_LINK_LIBRARIES(${PROJECT_NAME}
     ${LIB_CBK}
-    ${wxWidgets_LIBRARIES}
 )
