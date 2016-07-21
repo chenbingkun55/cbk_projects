@@ -8,10 +8,6 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #include "lib_SplitPictureTool.h"
-#include "wx/file.h"
-#include "wx/bitmap.h"
-#include "wx/msw/brush.h"
-#include "wx/chartype.h"
 
 NS_CBK_BEGIN
 SplitPictureTool::SplitPictureTool(const tstring picFile, const tstring outPath /*= EMPTY_STRING*/, const tstring setupXmlFile /*= EMPTY_STRING*/)
@@ -105,15 +101,6 @@ void SplitPictureTool::process()
 
 void SplitPictureTool::splitProcess()
 {
-	if (!wxFile::Exists(wxT("text.png"))) 
-	{
-		return;
-	}
-
-	wxFile file(wxT("text.png"));
-	
-	int len = file.Length();
-
 
 }
 

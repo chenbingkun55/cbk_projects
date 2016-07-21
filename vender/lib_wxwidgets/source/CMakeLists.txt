@@ -1,5 +1,5 @@
 ﻿# 设置变量
-SET(PROJECT_NAME lib_wxWidgets) # 修改 app_NAME 为新项目名称
+SET(PROJECT_NAME wxbase31ud) # 修改 app_NAME 为新项目名称
 
 # 项目信息
 project (${PROJECT_NAME})
@@ -31,5 +31,10 @@ add_library(${PROJECT_NAME} ${ALL_FILES})
 
 ### 指定链接库
 TARGET_LINK_LIBRARIES(${PROJECT_NAME}
-    ${LIB_CBK}
+    lib_Base
+    lib_SplitPictureTool
+    lib_tinyxml
+    lib_jpeg
+    lib_png
+    lib_zlib
 )

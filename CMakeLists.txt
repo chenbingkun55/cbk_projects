@@ -28,17 +28,15 @@ else ()
 endif ()
 
 # CBK 库名
-SET(LIB_CBK 
+SET(LIB_CBK
     lib_Base
     lib_SplitPictureTool
     lib_tinyxml
     lib_jpeg
     lib_png
     lib_zlib
+    lib_wxWidgets
 )
-# wxWidgets 根目录
-#SET(wxWidgets_ROOT_DIR "${PROJECT_SOURCE_DIR}/vender/wxWidgets/wxWidgets-3.1.0")
-
 
 # CBK 头文件
 SET(INCLUDE_CBK 
