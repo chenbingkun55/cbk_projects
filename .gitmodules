@@ -1,0 +1,3 @@
+[submodule "doc/SGI_STL"]
+	path = doc/SGI_STL
+	url = https://github.com/chenhanzhun/STL
