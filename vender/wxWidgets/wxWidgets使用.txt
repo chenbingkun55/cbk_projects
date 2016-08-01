@@ -1,0 +1,31 @@
+1. 打 Developer Command For VS2015  工具
+2. 切换到 wxWidgets\wxWidgets-3.1.0\build\msw 目录
+3. 运行以下编译
+    nmake /f makefile.vc SHARED=0 UNICODE=1 BUILD=debug
+
+
+
+CMAKE 根 :
+==================================================================
+if (CMAKE_SYSTEM_NAME MATCHES "Windows")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_CRT_SECURE_NO_WARNINGS -D__WXMSW__ -D_UNICODE -DWXBUILDING -DwxUSE_ZLIB_H_IN_PATH -DSCI_LEXER -DLINK_LEXERS -DCOMPILED_FROM_DSP")
+else ()
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+endif ()
+
+# wxWidgets 根目录
+SET(wxWidgets_ROOT_DIR "${PROJECT_SOURCE_DIR}/vender/wxWidgets/wxWidgets-3.1.0")
+
+
+
+==================================================================
+GUI APP Cmake 添加
+
+set(wxWidgets_CONFIGURATION mswud)
+find_package(wxWidgets COMPONENTS core base REQUIRED)
+include(${wxWidgets_USE_FILE})
+
+add_executable(${PROJECT_NAME} WIN32 ${ALL_FILES})
+
+### 指定链接库
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${wxWidgets_LIBRARIES})

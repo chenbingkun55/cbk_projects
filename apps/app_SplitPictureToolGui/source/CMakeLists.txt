@@ -18,10 +18,9 @@ SET(ALL_FILES
 source_group_by_dir(ALL_FILES)
 
 
-### CBK 头文件
-INCLUDE_DIRECTORIES(
-    ${INCLUDE_CBK}
-)
+set(wxWidgets_CONFIGURATION mswud)
+find_package(wxWidgets COMPONENTS core base REQUIRED)
+include(${wxWidgets_USE_FILE})
  
 
 # 指定生成目标
@@ -32,6 +31,4 @@ SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../../../../bin)
 add_executable(${PROJECT_NAME} WIN32 ${ALL_FILES})
 
 ### 指定链接库
-TARGET_LINK_LIBRARIES(${PROJECT_NAME}
-    ${LIB_CBK}
-)
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${wxWidgets_LIBRARIES})

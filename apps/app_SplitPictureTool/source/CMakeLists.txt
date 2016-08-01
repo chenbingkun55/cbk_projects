@@ -30,3 +30,8 @@ SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../../../../bin)
 
 
 add_executable(${PROJECT_NAME} ${ALL_FILES})
+
+### 指定链接库
+TARGET_LINK_LIBRARIES(${PROJECT_NAME}
+    ${LIB_CBK}
+)
