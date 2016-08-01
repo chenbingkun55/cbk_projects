@@ -27,6 +27,7 @@ source_group_by_dir(ALL_FILES)
 # 输出文件目录
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../../../../bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../../../../bin)
+SET(WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/../../../../bin)
 
 
 add_executable(${PROJECT_NAME} ${ALL_FILES})

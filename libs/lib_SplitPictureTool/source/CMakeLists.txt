@@ -22,10 +22,17 @@ SET(ALL_FILES
 # 按源目录来Filters
 source_group_by_dir(ALL_FILES)
 
+set(wxWidgets_CONFIGURATION mswud)
+find_package(wxWidgets COMPONENTS core base REQUIRED)
+include(${wxWidgets_USE_FILE})
 
 # 指定生成目标
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../../../../bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../../../../bin)
+SET(WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/../../../../bin)
 
 # 生成链接库
 add_library(${PROJECT_NAME} ${ALL_FILES})
+
+### 指定链接库
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${wxWidgets_LIBRARIES})

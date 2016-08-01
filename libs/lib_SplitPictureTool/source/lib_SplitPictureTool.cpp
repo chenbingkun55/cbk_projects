@@ -10,9 +10,8 @@
 #include "lib_SplitPictureTool.h"
 
 NS_CBK_BEGIN
-SplitPictureTool::SplitPictureTool(const tstring picFile, const tstring outPath /*= EMPTY_STRING*/, const tstring setupXmlFile /*= EMPTY_STRING*/)
+SplitPictureTool::SplitPictureTool(const tstring outPath /*= EMPTY_STRING*/, const tstring setupXmlFile /*= EMPTY_STRING*/)
 {
-	m_picFile = picFile;
 	m_setupXmlFile = setupXmlFile;
 	m_sOutPath = outPath;
 	m_setupXmlStr = EMPTY_STRING;
@@ -43,8 +42,8 @@ bool SplitPictureTool::initialize()
 		NS_CBK_CONVERT::strToint(m_row,fromat->Attribute("row"));
 		NS_CBK_CONVERT::strToint(m_colmun, fromat->Attribute("colmun"));
 
-		this->intBlockList(root->FirstChildElement("blocks"));
-		this->intOffsetList(root->FirstChildElement("offsets"));
+		this->initBlockList(root->FirstChildElement("blocks"));
+		this->initOffsetList(root->FirstChildElement("offsets"));
 	}
 	return true;
 }
@@ -54,7 +53,7 @@ void SplitPictureTool::terminate()
 
 }
 
-void SplitPictureTool::intBlockList(TiXmlElement* blocks)
+void SplitPictureTool::initBlockList(TiXmlElement* blocks)
 {
 		TiXmlElement* block = blocks->FirstChildElement("block");
 		do
@@ -71,7 +70,7 @@ void SplitPictureTool::intBlockList(TiXmlElement* blocks)
 		} while (block);
 }
 
-void SplitPictureTool::intOffsetList(TiXmlElement* offsets)
+void SplitPictureTool::initOffsetList(TiXmlElement* offsets)
 {
 	TiXmlElement* offset = offsets->FirstChildElement("offset");
 	do
@@ -92,21 +91,66 @@ void SplitPictureTool::intOffsetList(TiXmlElement* offsets)
 	} while (offset);
 }
 
-void SplitPictureTool::process() 
+void SplitPictureTool::process(const tstring picFile)
 {
-	//for(m_picFiles){
-	this->splitProcess();
-	//}
+	this->splitProcess(picFile);
+	this->finishingFlush();
 }
 
-void SplitPictureTool::splitProcess()
-{
+//void SplitPictureTool::process(vector<tstring> picFiles)
+//{
+//	//for(m_picFiles){
+//	this->splitProcess(picFile);
+//	this->finishingFlush();
+//	//}
+//}
 
+void SplitPictureTool::splitProcess(const tstring picFile)
+{
+	wxImage::AddHandler(new wxPNGHandler);
+	wxImageList* imageList = new wxImageList(m_row, m_colmun,true,1);
+	wxImage image(picFile,wxBITMAP_TYPE_PNG);
+	if (!image.Ok()) {
+		wxMessageBox("Load png False");
+		return;
+	}
+
+	int blockW = image.GetWidth() / m_colmun;
+	int blockH = image.GetHeight() / m_row;
+	int index = 0;
+	for (int col = 0; col < m_colmun; col++)
+	{
+		for (int row = 0; row < m_row; row++) 
+		{
+			SPLIT_BLOCK block = m_SplitBlockList[index];
+			SPLIT_OFFSET off  = this->getOffset(block.m_Index);
+
+			wxImage image2(image.GetSubImage(wxRect(wxPoint(blockW*col, blockH*row),wxSize(blockW , blockH))));
+			imageList->Add(image2);
+
+//			std::cout << index << " -- " << "new Width: " << image2.GetWidth() - off.m_Left << "new Height: " << image2.GetHeight() - off.m_Top << std::endl;
+			index++;
+		}
+	}
+
+
+	wxMessageBox("Load png true");
+
+	for (int i = 0; i < imageList->GetImageCount(); i++) 
+	{
+
+	}
 }
 
-int SplitPictureTool::offsetProcess(int oIndex)
+SplitPictureTool::SPLIT_OFFSET SplitPictureTool::getOffset(int oIndex)
 {
-	return 0;
+	TV_SPLIT_OFFSET::iterator it = find(m_SplitOffsetList.begin(), m_SplitOffsetList.end(), SPLIT_OFFSET(oIndex));
+	if (it == m_SplitOffsetList.end()) 
+	{
+		return SPLIT_OFFSET();
+	}
+
+	return *it;
 }
 
 void SplitPictureTool::finishingFlush()

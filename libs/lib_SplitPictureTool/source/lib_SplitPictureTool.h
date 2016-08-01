@@ -25,7 +25,7 @@ public:
 			m_PicName = picName;
 		}
 
-	private:
+	public:
 		int m_Index;
 		tstring m_PicName;
 	}SPLIT_BLOCK;
@@ -42,7 +42,12 @@ public:
 			m_Rigtht = right;
 		}
 
-	private:
+		bool operator ==(const SPLIT_OFFSET_TAG& tmp) const
+		{
+			return tmp.m_Index == m_Index;
+		}
+
+	public:
 		int m_Index;
 		int m_Top;
 		int m_Bottom;
@@ -53,30 +58,27 @@ public:
 	typedef std::vector<SPLIT_OFFSET> TV_SPLIT_OFFSET;
 
 public:
-	SplitPictureTool(const tstring picFile, const tstring outPath = EMPTY_STRING, const tstring setupXmlFile = EMPTY_STRING);
+	SplitPictureTool(const tstring outPath = EMPTY_STRING, const tstring setupXmlFile = EMPTY_STRING);
 	virtual ~SplitPictureTool();
 
 	bool initialize();
 	void terminate();
 
-	void intBlockList(TiXmlElement* blocks);
-	void intOffsetList(TiXmlElement* offsets);
+	void initBlockList(TiXmlElement* blocks);
+	void initOffsetList(TiXmlElement* offsets);
 
-	void process();
-	void splitProcess();
-	int offsetProcess(int oIndex);
+	void process(const tstring picFile);
+	void splitProcess(const tstring picFile);
+	SPLIT_OFFSET getOffset(int oIndex);
 	void finishingFlush();
 
 private:
 	int m_row;
 	int m_colmun;
-	tstring m_picFile;
-	tstring m_sPicFile;
 	tstring m_sOutPath;
 	tstring m_setupXmlFile;
 	tstring m_setupXmlStr;
 
-	std::fstream* m_pPicFile;
 	TV_SPLIT_BLOCK m_SplitBlockList;
 	TV_SPLIT_OFFSET m_SplitOffsetList;
 };
