@@ -1,3 +1,6 @@
+《跟我学wxWidgets开发》系列教程开始了
+http://www.cnzui.com/archives/921
+
 1. 打 Developer Command For VS2015  工具
 2. 切换到 wxWidgets\wxWidgets-3.1.0\build\msw 目录
 3. 运行以下编译
