@@ -46,6 +46,8 @@ SET(INCLUDE_CBK
     ${PROJECT_SOURCE_DIR}/libs/lib_Base/source
     ${PROJECT_SOURCE_DIR}/libs/lib_SplitPictureTool/source
     ${PROJECT_SOURCE_DIR}/vender/lib_tinyxml/source
+    ${PROJECT_SOURCE_DIR}/vender/wxWidgets//wxWidgets-3.1.0/include
+    ${PROJECT_SOURCE_DIR}/vender/wxWidgets//wxWidgets-3.1.0/include/msvc
 )
 
 # 添加代码 子目录
