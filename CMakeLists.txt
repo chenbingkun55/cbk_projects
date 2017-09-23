@@ -28,7 +28,7 @@ else ()
 endif ()
 
 # wxWidgets 根目录
-SET(wxWidgets_ROOT_DIR "${PROJECT_SOURCE_DIR}/vender/wxWidgets/wxWidgets-3.1.0")
+SET(wxWidgets_ROOT_DIR "${PROJECT_SOURCE_DIR}/libs/lib_wxwidgets")
 
 
 # CBK 库名
@@ -42,17 +42,18 @@ SET(LIB_CBK
 
 # CBK 头文件
 SET(INCLUDE_CBK 
-    ${PROJECT_SOURCE_DIR}/include
-    ${PROJECT_SOURCE_DIR}/libs/lib_Base/source
-    ${PROJECT_SOURCE_DIR}/libs/lib_SplitPictureTool/source
-    ${PROJECT_SOURCE_DIR}/vender/lib_tinyxml/source
-    ${PROJECT_SOURCE_DIR}/vender/wxWidgets//wxWidgets-3.1.0/include
-    ${PROJECT_SOURCE_DIR}/vender/wxWidgets//wxWidgets-3.1.0/include/msvc
+    ${PROJECT_SOURCE_DIR}/cbk/include
+    ${PROJECT_SOURCE_DIR}/libs/lib_tinyxml/source
+    ${PROJECT_SOURCE_DIR}/libs/lib_wxwidgets/include
+    ${PROJECT_SOURCE_DIR}/libs/lib_wxwidgets/include/msvc
 )
 
-# 添加代码 子目录
-add_subdirectory(apps/app_SplitPictureTool/source)
-add_subdirectory(apps/app_SplitPictureToolGui/source)
-add_subdirectory(libs/lib_Base/source)
-add_subdirectory(libs/lib_SplitPictureTool/source)
-add_subdirectory(vender/lib_tinyxml/source)
+# apps
+#add_subdirectory(apps/app_SplitPictureTool/source)
+#add_subdirectory(apps/app_SplitPictureToolGui/source)
+
+# libs
+add_subdirectory(libs/lib_jpeg/source)
+add_subdirectory(libs/lib_png/source)
+add_subdirectory(libs/lib_zlib/source)
+add_subdirectory(libs/lib_tinyxml/source)
