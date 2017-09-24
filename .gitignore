@@ -1,4 +1,4 @@
-bin/
+/libs/*/bin/
 build/
 demos/
 distrib/
@@ -10,3 +10,4 @@ tests/
 *\.pdb
 *\.lib
 *\.so
+*\.a

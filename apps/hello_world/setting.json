@@ -1,0 +1,7 @@
+{
+    "app_name": "HelloWorld2",
+    "window":{
+        "width": 800,
+        "height": 600
+    }
+}

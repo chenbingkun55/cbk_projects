@@ -6,7 +6,7 @@ project (${PROJECT_NAME})
 
 ### CBK 头文件
 INCLUDE_DIRECTORIES(
-    ${INCLUDE_CBK}
+    ${INCLUDE_BASE}
 )
 
 ### 查找当前目录下的所有源文件
@@ -27,9 +27,9 @@ find_package(wxWidgets COMPONENTS core base REQUIRED)
 include(${wxWidgets_USE_FILE})
 
 # 指定生成目标
-SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../../../../bin)
-SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../../../../bin)
-SET(WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/../../../../bin)
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../bin)
+SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../bin)
+SET(WORKING_DIRECTORY ${PROJECT_BINARY_DIR})
 
 # 生成链接库
 add_library(${PROJECT_NAME} ${ALL_FILES})
