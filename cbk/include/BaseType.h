@@ -11,6 +11,10 @@
 #define EXIT_SUCCESS 0
 #define EXIT_FAILURE 1
 
+
 NS_BEGIN
+
+extern const std::string EMPTY_STRING;
+
 NS_END
 USE_NS

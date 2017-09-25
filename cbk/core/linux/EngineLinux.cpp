@@ -5,7 +5,7 @@ EngineLinux::EngineLinux(int aArgc, char* aArgv[])
     for (int i = 0; i < aArgc; ++i)
     {
         m_args.push_back(aArgv[i]);
-     }
+    }
 }
 
 EngineLinux::~EngineLinux()

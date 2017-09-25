@@ -25,8 +25,8 @@ public:
 protected:
     bool m_bActive;
     bool m_bPaused;
-    Setting* m_defaultSetting;
-    Setting* m_userSetting;
+    Setting m_defaultSetting;
+    Setting m_userSetting;
 
     std::vector<std::string> m_args;
 

@@ -42,4 +42,13 @@ bool Setting::parseSetting(const std::string& filename)
     return true;
 }
 
+void Setting::setValue(const std::string& section, const std::string& key, const std::string& value)
+{
+
+}
+bool Setting::deleteValue(const std::string& section, const std::string& key)
+{
+
+    return true;
+}
 NS_END

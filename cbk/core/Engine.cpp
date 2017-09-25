@@ -28,9 +28,33 @@ bool Engine::init()
 #elif CBK_PLATFORM_WINDOWS
     m_fileSystem.reset(new FileSystemWin);
 #endif
-    m_defaultSetting = new Setting();
 
-    m_defaultSetting->init("../setting.json");
+    m_defaultSetting.init("../setting.json");
+
+    std::string name;
+    m_defaultSetting.getValue(name, "app_name"); 
+
+    int width;
+    m_defaultSetting.getValue(width, "width"); 
+
+    int panelWidth;
+    m_defaultSetting.getValue(panelWidth, "width", "panel"); 
+
+    int listWidth;
+    m_defaultSetting.getValue(listWidth, "width", "list"); 
+
+    int mapWidth;
+    m_defaultSetting.getValue(mapWidth, "width", "map"); 
+
+    int buttonWidth;
+    m_defaultSetting.getValue(buttonWidth, "width", "button"); 
+
+    std::cout << name << std::endl;
+    std::cout << width << std::endl;
+    std::cout << panelWidth << std::endl;
+    std::cout << listWidth << std::endl;
+    std::cout << mapWidth << std::endl;
+    std::cout << buttonWidth << std::endl;
     /* m_userSetting.init("../setting.json"); */
     
     

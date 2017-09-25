@@ -12,6 +12,7 @@ INCLUDE_DIRECTORIES(
 ### 查找当前目录下的所有源文件
 # 并将名称保存到 DIR_LIB_SRCS 变量
 file(GLOB_RECURSE DIR_SRCS ${PROJECT_SOURCE_DIR} 
+    "include/*.cpp"
     "utils/*.cpp"
     "files/*.cpp"
     "core/*.cpp"
