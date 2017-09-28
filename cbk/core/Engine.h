@@ -27,6 +27,7 @@ protected:
     bool m_bPaused;
     Setting m_defaultSetting;
     Setting m_userSetting;
+    std::string m_graphicsDriver;
 
     std::vector<std::string> m_args;
 

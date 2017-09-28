@@ -15,14 +15,18 @@ file(GLOB_RECURSE DIR_SRCS ${PROJECT_SOURCE_DIR}
     "include/*.cpp"
     "utils/*.cpp"
     "files/*.cpp"
+    "graphics/*.cpp"
     "core/*.cpp"
+    "math/*.cpp"
     "files/linux/*.cpp"
     "core/linux/*.cpp")
 file(GLOB_RECURSE DIR_HEADER ${PROJECT_SOURCE_DIR}
     "include/*.h"
     "utils/*.h"
     "files/*.h"
+    "graphics/*.h"
     "core/*.h"
+    "math/*.h"
     "files/linux/*.h"
     "core/linux/*.h")
 

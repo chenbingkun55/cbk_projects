@@ -1,9 +1,11 @@
 #include "Engine.h"
-#include "utils/Setting.h"
+#include <math/Size2.h>
+#include <utils/Setting.h>
+#include <graphics/Renderer.h>
 #if CBK_PLATFORM_LINUX
-#include "files/linux/FileSystemLinux.h"
+#include <files/linux/FileSystemLinux.h>
 #elif CBK_PLATFORM_WINDOWS
-#include "files/windows/FileSystemWin.h"
+#include <files/windows/FileSystemWin.h>
 #endif
 
 NS_BEGIN
@@ -29,35 +31,22 @@ bool Engine::init()
     m_fileSystem.reset(new FileSystemWin);
 #endif
 
+
+    graphics::Renderer::Driver graphicsDriver = graphics::Renderer::Driver::Default; 
+
     m_defaultSetting.init("../setting.json");
 
-    std::string name;
-    m_defaultSetting.getValue(name, "app_name"); 
 
-    int width;
-    m_defaultSetting.getValue(width, "width"); 
+    std::string test = "ABC"; std::string graphicsDriverValue;
+    m_defaultSetting.getValue(graphicsDriverValue, "graphicsDriver", "engine", test); 
 
-    int panelWidth;
-    m_defaultSetting.getValue(panelWidth, "width", "panel"); 
+    bool i = true;
+    bool j = false;
+    m_defaultSetting.getValue(j, "bool", "engine", i); 
 
-    int listWidth;
-    m_defaultSetting.getValue(listWidth, "width", "list"); 
+    std::cout << j << "xxxx" << graphicsDriverValue << " " << std::endl;
 
-    int mapWidth;
-    m_defaultSetting.getValue(mapWidth, "width", "map"); 
 
-    int buttonWidth;
-    m_defaultSetting.getValue(buttonWidth, "width", "button"); 
-
-    std::cout << name << std::endl;
-    std::cout << width << std::endl;
-    std::cout << panelWidth << std::endl;
-    std::cout << listWidth << std::endl;
-    std::cout << mapWidth << std::endl;
-    std::cout << buttonWidth << std::endl;
-    /* m_userSetting.init("../setting.json"); */
-    
-    
     return true;
 }
 
