@@ -1,5 +1,5 @@
 #pragma once 
-
+#include <set>
 #include <BaseType.h>
 #include <core/Engine.h>
 
@@ -21,6 +21,7 @@ public:
     Renderer() {};
     ~Renderer() {};
     
+    static std::set<Renderer::Driver> getAvailableRendererDrivers();
 };
 }
 NS_END

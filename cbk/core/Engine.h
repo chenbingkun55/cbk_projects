@@ -4,10 +4,12 @@
 #include <utils/NonCopyable.h>
 #include <utils/Setting.h>
 #include <files/FileSystem.h>
+#include <window/Window.h>
 
 void engineMain(const std::vector<std::string>& args);
 
 NS_BEGIN
+class Window;
 class Engine : public NonCopyable
 {
 public:
@@ -21,6 +23,7 @@ public:
     virtual void main();
 
     FileSystem* getFileSystem() { return m_fileSystem.get(); }
+    Window* getWindow() { return m_window.get(); }
 
 protected:
     bool m_bActive;
@@ -32,6 +35,7 @@ protected:
     std::vector<std::string> m_args;
 
     std::unique_ptr<FileSystem> m_fileSystem;
+    std::unique_ptr<Window> m_window;
 };
 
 extern Engine* sharedEngine;

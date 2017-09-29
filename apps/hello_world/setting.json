@@ -1,9 +1,10 @@
 {
     "app_name": "HelloWorld2",
     "engine": {
-        "graphicsDrive": "default",
+        "graphicsDriver": "default",
         "input": "default",
-        "size2": 80,
+        "width": 80,
+        "height": 90,
         "bool": true 
     }
 }

@@ -25,7 +25,7 @@ public:
     bool deleteValue(const std::string& section, const std::string& key);
 
     template <typename T>
-    bool getValue(T& outData, const std::string& key, const std::string& item = EMPTY_STRING, T& defaultValue = static_cast<T>(0)) const
+    bool getValue(T& outData, const std::string& key, const std::string& item = EMPTY_STRING, const std::string& defaultValue = EMPTY_STRING) const
     {
         Value::ConstMemberIterator itr = m_document.FindMember(key.c_str());
         Value::ConstMemberIterator itemIt = m_document.MemberEnd();
@@ -49,9 +49,9 @@ public:
             }
         }
 
+        std::stringstream ss;
         if (itr != itemIt->value.MemberEnd())
         {
-            std::stringstream ss;
             if(itr->value.IsString())
             {
                 ss << itr->value.GetString();
@@ -68,17 +68,14 @@ public:
             {
                 std::cout << "value is not find type." << std::endl;
             }
-
-            ss >> std::boolalpha >> outData; //boolalpha将bool解释为 false, ture 
-            return static_cast<bool>(ss);
         } 
         else
         {
-            outData = defaultValue;
-            return false;
+            ss << defaultValue;
         }
-
-        return false;
+        
+        ss >> std::boolalpha >> outData; //boolalpha将bool解释为 false, ture 
+        return static_cast<bool>(ss);
     }
 
 private:
