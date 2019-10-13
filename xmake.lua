@@ -15,7 +15,7 @@ end
 target("imgui")
     set_kind("shared")
 
-    add_linkdirs("/usr/lib/x86_64-linux-gnu/","/usr/local/lib")
+    -- add_linkdirs("/usr/lib/x86_64-linux-gnu/","/usr/local/lib")
     -- add link lib
     add_links("glfw3","GL","Xrandr","X11","Xi","Xxf86vm","pthread","dl","Xinerama","m","rt","Xcursor")
 
@@ -46,7 +46,10 @@ target("fmt")
 target("test_imgui")
     set_kind("binary")
 
+    add_files("cbk/graphics/glad.c")
     add_files("apps/test_imgui/main.cpp")
+
+    add_includedirs("cbk/include")
 
     add_cxxflags("-fPIC")
     add_deps("imgui", "fmt", "tinyxml")
