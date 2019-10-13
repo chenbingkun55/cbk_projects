@@ -1,3 +1,4 @@
+.xmake/
 /libs/*/bin/
 doc/rapidjson
 build/
@@ -7,9 +8,9 @@ samples/
 tests/
 *\.un~
 *\.bak
+*\.swp
 *\.tmp
 *\.pdb
 *\.lib
 *\.so
 *\.a
-^.*
