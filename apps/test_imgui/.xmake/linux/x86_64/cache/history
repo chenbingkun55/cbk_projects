@@ -1,0 +1,8 @@
+{
+    __version = "2.2.8",
+    cmdlines = {
+        "xmake -P .",
+        "xmake lua /usr/local/share/xmake/actions/build/statistics.lua --project=.",
+        "xmake -P ."
+    }
+}

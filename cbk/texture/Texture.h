@@ -3,8 +3,7 @@
 #include <BaseType.h>
 
 NS_BEGIN
-namespace graphics
-{
+namespace graphics {
 class Texture : public NonCopyable
 {
 public:
@@ -22,6 +21,5 @@ public:
 
 public:
 
-};
-}
+};}
 NS_END

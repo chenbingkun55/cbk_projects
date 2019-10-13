@@ -1,0 +1,11 @@
+{
+    options_all = { },
+    options_fmt = ref("options_all"),
+    options_imgui = ref("options_all"),
+    mtimes = {
+        ["xmake.lua"] = 1570950627
+    },
+    options_tinyxml = ref("options_all"),
+    __version = "2.2.8",
+    options_test_imgui = ref("options_all")
+}

@@ -1,10 +1,9 @@
 #include "Engine.h"
 #include <math/Size2.h>
 #include <utils/Setting.h>
-#include <graphics/Renderer.h>
 #include <texture/Texture.h>
 #if CBK_PLATFORM_LINUX
-#include <files/linux/FileSystemLinux.h>
+#include <file/linux/FileSystemLinux.h>
 #elif CBK_PLATFORM_WINDOWS
 #include <files/windows/FileSystemWin.h>
 #endif
@@ -31,6 +30,9 @@ bool Engine::init()
 #elif CBK_PLATFORM_WINDOWS
     m_fileSystem.reset(new FileSystemWin);
 #endif
+
+    std::vector<int> abc;
+    abc.push_back(1);
 
 
     graphics::Renderer::Driver graphicsDriver = graphics::Renderer::Driver::Default; 
@@ -112,12 +114,25 @@ bool Engine::init()
     }
 
 #if CBK_PLATFROM_LINUX
-    m_window.reset(new WindowLinux);
+    //m_window.reset(new WindowLinux);
 #elif CBK_PLATFROM_WINDOWS
-    m_window.reset(new WindowWin);
+    //m_window.reset(new WindowWin);
 #else
     m_window.reset(new Window);
 #endif
+
+    m_renderer.reset(new graphics::Renderer(graphicsDriver));
+
+    // if (m_window->init(size))
+    // {
+    //     return false;
+    // }
+
+    // if (m_renderer.init(m_window.get()))
+    // {
+    //     return false;
+    // }
+
     
     std::cout << fullscreenValue << std::endl;
 

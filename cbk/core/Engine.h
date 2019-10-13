@@ -3,8 +3,9 @@
 #include <BaseType.h>
 #include <utils/NonCopyable.h>
 #include <utils/Setting.h>
-#include <files/FileSystem.h>
+#include <file/FileSystem.h>
 #include <window/Window.h>
+#include <graphics/Renderer.h>
 
 void engineMain(const std::vector<std::string>& args);
 
@@ -36,6 +37,7 @@ protected:
 
     std::unique_ptr<FileSystem> m_fileSystem;
     std::unique_ptr<Window> m_window;
+    std::unique_ptr<graphics::Renderer> m_renderer;
 };
 
 extern Engine* sharedEngine;
